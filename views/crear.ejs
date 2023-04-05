@@ -1,0 +1,28 @@
+<%- include('template/cabecera',{tituloWeb:'Mascotas'}); %>
+<h5>Crear  Nueva Mascota</h5>
+<div class="row">
+    <form action="/mascotas" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Nombre de la Mascota" name="nombre" id="nombre" type="text" class="validate">
+          <label for="nombre">Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Nombre de Propietario" name="propietario"  type="text" class="validate">
+          <label for="propietario">Propietario</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="descripcion" name="descripcion" type="text" class="validate">
+          <label for="descripcion">Descripcion</label>
+        </div>
+      </div>
+             <button class="btn waves-effect waves-light" type="Submit" >Crear
+            <i class="material-icons right">send</i>
+          </button>
+        
+     
+    </form>
+  </div>
+   
+    
+<%- include('template/footer'); %>  

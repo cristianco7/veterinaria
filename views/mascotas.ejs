@@ -1,0 +1,45 @@
+<%- include('template/cabecera',{tituloWeb:'Mascotas'}); %>
+
+<h5><%= listaMascotas %></h5>
+<a class="waves-effect waves-light btn-large" href="/mascotas/crear">
+    <i class="material-icons left">cloud</i>Crear mascota
+</a>
+
+
+
+<table class="highlight">
+    <thead>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Propietario</th>
+        <th>Descripción</th>
+        <th>Acción</th>
+    </thead>
+    <tbody>
+        <% if(arrayMascotas.length>0){ %>
+            <% arrayMascotas.forEach(mascota=>{%>
+                <tr>
+                    <th><%= mascota.id %></th>
+                    <td><%= mascota.nombre %></td>
+                    <td><%= mascota.propietario %></td>
+                    <td><%= mascota.descripcion %></td>
+                    <td>
+                 <a class="waves-effect waves-light btn"
+                    href="mascotas/<%= mascota.id %>"
+                 >
+                        Editar
+                </a></td>
+                </tr>
+         <% }) %>
+        <% }else{%>
+        <tr>
+            <td colspan="4">No hay mascotas</td>
+        </tr>
+
+
+       <% } %>    
+    </tbody>
+</table>
+   
+    
+<%- include('template/footer'); %>  

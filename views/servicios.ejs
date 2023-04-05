@@ -1,0 +1,44 @@
+<%- include('template/cabecera',{tituloWeb:'Servicios'}); %>
+
+<h5><%= listaServicios %></h5>
+<a class="waves-effect waves-light btn-large" href="/servicios/crearservicio">
+    <i class="material-icons left">cloud</i>Crear servicio
+</a>
+
+<table class="highlight">
+    <thead>
+        <th>#</th>
+        <th>Nombre Servicio</th>
+        <th>Nombre Mascota</th>
+        <th>Descripción Servicio</th>
+        <th>Numero de contacto</th>
+    </thead>
+    <tbody>
+        <% if(arrayServicios.length>0){ %>
+            <% arrayServicios.forEach(servicio=>{%>
+                <tr>
+                    <th><%= servicio.id %></th>
+                    <td><%= servicio.nombreservicio %></td>
+                    <td><%= servicio.nombremascota %></td>       
+                    <td><%= servicio.descripcionservicio %></td>
+                    <td><%= servicio.numero %></td> 
+                    <td>
+                 <a class="waves-effect waves-light btn"
+                    href="servicios/<%= servicio.id %>"
+                 >
+                        Editar
+                </a></td>
+                </tr>
+         <% }) %>
+        <% }else{%>
+        <tr>
+            <td colspan="4">No hay servicios</td>
+        </tr>
+
+
+       <% } %>    
+    </tbody>
+</table>
+   
+    
+<%- include('template/footer'); %>  

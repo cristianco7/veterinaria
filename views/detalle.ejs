@@ -1,0 +1,58 @@
+<%- include('template/cabecera',{tituloWeb:'Mascotas'}); %>
+
+<%if (!error){ %>
+    <form id="editar" data-id="<%= mascota.id %>">
+       <input
+       type="text"
+       value="<%=mascota.nombre%>"
+       class="form-control my-2"
+       name="nombre"
+       id="nombreInput"
+    >
+    <input
+       type="text"
+       value="<%=mascota.propietario%>"
+       class="form-control my-2"
+       name="propietario"
+       id="propietarioInput"
+    >
+    <input
+       type="text"
+       value="<%=mascota.descripcion%>"
+       class="form-control my-2"
+       name="descripcion"
+       id="descripcionInput"
+    > 
+    <button class="btn waves-effect waves-light" type="Submit" >Editar
+    </button>
+    </form> 
+    <% } %>
+    <script>
+    const formEditar = document.querySelector('#editar');
+
+    formEditar.addEventListener('submit' ,async (e)=>{
+        e.preventDefault()
+        const nombre = document.querySelector('#nombreInput').value
+        const propietario = document.querySelector('#propietarioInput').value
+        const descripcion = document.querySelector('#descripcionInput').value
+        const id = formEditar.dataset.id
+
+        const data = await fetch(`/mascotas/${id}`,{
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({nombre, propietario, descripcion})
+        })
+        const res = await data.json()
+        if(res.estado){
+            window.location.href = '/mascotas'
+        }else{
+            console.log(res)
+        }
+    })
+    
+</script>
+<%- include('template/footer'); %>  
+
+

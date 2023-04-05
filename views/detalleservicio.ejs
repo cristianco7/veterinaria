@@ -1,0 +1,64 @@
+<%- include('template/cabecera',{tituloWeb:'Mascotas'}); %>
+
+<%if (!error){ %>
+    <form id="editar" data-id="<%= servicio.id %>">
+       <input
+       type="text"
+       value="<%=servicio.nombreservicio%>"
+       class="form-control my-2"
+       name="nombreservicio"
+       id="nombreservicioInput"
+    >
+    <input
+       type="text"
+       value="<%=servicio.nombremascota%>"
+       class="form-control my-2"
+       name="nombremascota"
+       id="nombremascotaInput"
+    >
+    <input
+       type="text"
+       value="<%=servicio.descripcionservicio%>"
+       class="form-control my-2"
+       name="descripcionservicio"
+       id="descripcionservicioInput"
+    > 
+    <input
+       type="text"
+       value="<%=servicio.numero%>"
+       class="form-control my-2"
+       name="numero"
+       id="numeroInput"
+    > 
+    <button class="btn waves-effect waves-light" type="Submit" >Editar
+    </button>
+    </form> 
+    <% } %>
+    <script>
+    const formEditar = document.querySelector('#editar');
+
+    formEditar.addEventListener('submit' ,async (e)=>{
+        e.preventDefault()
+        const nombreservicio = document.querySelector('#nombreservicioInput').value
+        const nombremascotaservicio = document.querySelector('#nombremascotaInput').value
+        const descripcionservicio = document.querySelector('#descripcionservicioInput').value
+        const numero = document.querySelector('#numeroInput').value
+        const id = formEditar.dataset.id
+
+        const data = await fetch(`/servicios/${id}`,{
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({nombreservicio, nombremascotaservicio, descripcionservicio, numero})
+        })
+        const res = await data.json()
+        if(res.estado){
+            window.location.href = '/servicios'
+        }else{
+            console.log(res)
+        }
+    })
+    
+</script>
+<%- include('template/footer'); %>  

@@ -1,0 +1,32 @@
+<%- include('template/cabecera',{tituloWeb:'Servicios'}); %>
+<h5>Crear Nuevo Servicio</h5>
+<div class="row">
+    <form action="/servicios" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Nombre del servicio" name="nombreservicio" id="nombreservicio" type="text" class="validate">
+          <label for="nombreservicio">Nombre servicio</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Nombre de la mascota" name="nombremascota"  type="text" class="validate">
+          <label for="nombremascota">Nombre mascota</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="descripcion" name="descripcionservicio" type="text" class="validate">
+          <label for="descripcionservicio">Descripcion del servicio</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="numero" name="numero" type="number" class="validate">
+            <label for="numero">Numero de contacto</label>
+          </div>
+      </div>
+             <button class="btn waves-effect waves-light" type="Submit" >Crear servicio
+            <i class="material-icons right">send</i>
+          </button>
+        
+     
+    </form>
+  </div>
+   
+    
+<%- include('template/footer'); %>  
